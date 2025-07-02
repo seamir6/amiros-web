@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ሉሲ ኮሌጅ - የስራ ማመልከቻዎች</title>
+    <!-- የውጪው style.css ፋይልህን በትክክል መገናኘቱን አረጋግጥ -->
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Logout and Back button group */
+        .admin-actions {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            gap: 10px; /* Space between buttons */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .admin-actions button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        #logout-button {
+            background-color: #dc3545;
+            color: white;
+        }
+        #logout-button:hover {
+            background-color: #c82333;
+        }
+        #back-button { /* Style for the new Back button */
+            background-color: #007bff; /* Blue color */
+            color: white;
+        }
+        #back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Page specific content area - ensures footer visibility */
+        main {
+            min-height: calc(100vh - 250px); /* Adjusted value to push footer down */
+        }
+
+        /* Specific style for the main message on this page */
+        .page-message {
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 2.5em; /* Larger font size */
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Styles for the table (copied from contact messages and adapted) */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .data-table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .data-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-data, .loading-message { /* Changed from .no-messages */
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #666;
+        }
+        .loading-message {
+            color: #007bff;
+        }
+        .action-buttons button {
+            padding: 8px 12px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+        .action-buttons .delete-btn {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+        .action-buttons .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .action-buttons .view-cv-btn { /* Style for View CV button */
+            background-color: #17a2b8; /* Info Blue */
+            color: white;
+        }
+        .action-buttons .view-cv-btn:hover {
+            background-color: #138496;
+        }
+        /* Style for cover letter column to limit height */
+        .cover-letter-text {
+            max-width: 250px; /* Adjust as needed */
+            max-height: 100px; /* Limit height */
+            overflow-y: auto; /* Add scroll if content overflows */
+            white-space: normal;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ዋናው የሳይት Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="image/lucy.jpg" alt="ሉሲ ኮሌጅ ሎጎ">
+                <h1>ሉሲ ኮሌጅ</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">መነሻ</a></li>
+                    <li><a href="about.html">ስለ እኛ</a></li>
+                    <li><a href="departments.html">የትምህርት ክፍሎች</a></li>
+                    <li><a href="careers.html">ቅጥር &amp; ማስታወቂያ</a></li>
+                    <li><a href="contact.html">እውቂያ</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="admin-dashboard-section">
+            <div class="container">
+                <!-- Button group for Logout and Back -->
+                <div class="admin-actions">
+                    <button id="back-button">ተመለስ (Back)</button>
+                    <button id="logout-button">ውጣ (Logout)</button>
+                </div>
+                
+                <h1>የሉሲ ኮሌጅ የስራ ማመልከቻዎች</h1>
+                
+                <!-- Job Applications Table - Content will be inserted by JavaScript -->
+                <div id="jobApplicationsTableContainer">
+                    <p class="loading-message"><i class="fas fa-spinner fa-spin"></i> ማመልከቻዎችን በማምጣት ላይ...</p>
+                    <!-- Table will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-about">
+                <h3>ስለ ሉሲ ኮሌጅ</h3>
+                <p>ሉሲ ኮሌጅ የላቀ ትምህርት ለመስጠት እና በማህበረሰብ ልማት ላይ ለመሳተፍ ቆርጦ ተነስቷል።</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>ፈጣን አገናኞች</h3>
+                <ul>
+                    <li><a href="#">የመግቢያ መስፈርቶች</a></li>
+                    <li><a href="#">የዜና ማዕከል</a></li>
+                    <li><a href="#">የተመራቂዎች ማህበር</a></li>
+                    <li><a href="#">ቅጥር</a></li>
+                    <li><a href="#">የግላዊነት ፖሊሲ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>እውቂያ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> አዲስ አበባ፣ ኢትዮጵያ</p>
+                <p><i class="fas fa-phone-alt"></i> +251-11-XXXXXXX</p>
+                <p><i class="fas fa-envelope"></i> info@lucycollege.edu</p>
+                <p><i class="fas fa-clock"></i> ሰኞ - አርብ: 8:30 ጥዋት - 5:30 ከሰዓት</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ሉሲ ኮሌጅ. ሁሉም መብቶች የተጠበቁ ናቸው።</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page-specific JavaScript for Job Applications Page
+        window.onload = () => { 
+            // Mobile Menu Toggle (Ensures header navigation works)
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav ul');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            const logoutButton = document.getElementById('logout-button');
+            const backButton = document.getElementById('back-button'); 
+
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    localStorage.removeItem('token'); 
+                    window.location.href = '/admin.html'; 
+                });
+            }
+
+            if (backButton) { 
+                backButton.addEventListener('click', () => {
+                    window.location.href = '/admin.html'; // Redirect to the admin dashboard
+                });
+            }
+
+            const API_BASE_URL = 'http://localhost:3000/api';
+
+            // Function to fetch and display job applications
+            async function fetchApplications() {
+                const applicationsContainer = document.getElementById('jobApplicationsTableContainer');
+                if (applicationsContainer) {
+                    applicationsContainer.innerHTML = '<p class="loading-message"><i class="fas fa-spinner fa-spin"></i> ማመልከቻዎችን በማምጣት ላይ...</p>';
+                }
+                
+                const token = localStorage.getItem('token'); 
+
+                if (!token) {
+                    if (applicationsContainer) applicationsContainer.innerHTML = '<p class="no-data" style="color: red;">ይህንን ገጽ ለማየት መግባት አለብዎት።</p>';
+                    setTimeout(() => { window.location.href = '/admin.html'; }, 2000); 
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/applications`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.status === 401 || response.status === 403) {
+                        localStorage.removeItem('token');
+                        alert('የእርስዎ ክፍለ ጊዜ አልፏል ወይም መግባት ያስፈልግዎታል። እባክዎ እንደገና ይግቡ።');
+                        window.location.href = '/admin.html'; 
+                        return;
+                    }
+
+                    if (!response.ok) {
+                        // Check if the response is HTML and not JSON
+                        const contentType = response.headers.get("content-type");
+                        if (contentType && contentType.indexOf("text/html") !== -1) {
+                            throw new Error('Server returned HTML instead of JSON. Check backend logs for errors.');
+                        }
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    let applications = await response.json();
+                    
+                    // Backend's applicationController.js might return { success: true, data: [...] }
+                    // Or, if not wrapped, it might directly return the array.
+                    if (applications.data && Array.isArray(applications.data)) {
+                        applications = applications.data;
+                    } else if (!Array.isArray(applications)) {
+                         console.warn("Expected applications.data to be an array, but received:", applications);
+                         throw new Error('Expected an array of applications or an object with a data array from backend.');
+                    }
+
+                    let tableHTML = `
+                        <div class="table-responsive">
+                            <table class="data-table" id="jobApplicationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ሙሉ ስም</th>
+                                        <th>ኢሜል</th>
+                                        <th>ስልክ ቁጥር</th>
+                                        <th>ዕድሜ</th> <!-- Added Age -->
+                                        <th>ጾታ</th> <!-- Added Gender -->
+                                        <th>የስራ መደብ</th>
+                                        <th>ማመልከቻ ቀን</th>
+                                        <th>CV/Resume</th>
+                                        <th>የሽፋን ደብዳቤ</th> <!-- Added Cover Letter -->
+                                        <th>ድርጊት</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+
+                    if (applications.length > 0) { 
+                        applications.forEach(app => {
+                            const cvDownloadLink = app.cvUpload ? 
+                                `${API_BASE_URL.replace('/api', '')}/${app.cvUpload}` : 
+                                '#'; 
+                            
+                            const applicationDate = app.createdAt ? 
+                                new Date(app.createdAt).toLocaleDateString('am-ET', { year: 'numeric', month: 'short', day: 'numeric' }) : 
+                                'Invalid Date';
+
+                            tableHTML += `
+                                <tr>
+                                    <td>${app.fullName}</td>
+                                    <td>${app.email}</td>
+                                    <td>${app.phone || 'N/A'}</td>
+                                    <td>${app.age || 'N/A'}</td> <!-- Display Age -->
+                                    <td>${app.gender || 'N/A'}</td> <!-- Display Gender -->
+                                    <td>${app.position}</td>
+                                    <td>${applicationDate}</td>
+                                    <td>
+                                        ${app.cvUpload ? `<button class="view-cv-btn" data-cv-path="${cvDownloadLink}">CV እይ</button>` : 'ያልቀረበ'}
+                                    </td>
+                                    <td><div class="cover-letter-text">${app.coverLetter || 'ያልቀረበ'}</div></td> <!-- Display Cover Letter -->
+                                    <td class="action-buttons">
+                                        <button class="delete-btn" data-id="${app._id}">ሰርዝ</button>
+                                    </td>
+                                </tr>`;
+                        });
+                    } else {
+                        tableHTML += '<tr><td colspan="10">የስራ ማመልከቻዎች የሉም።</td></tr>'; <!-- Changed colspan to 10 -->
+                    }
+                    tableHTML += `
+                                </tbody>
+                            </table>
+                        </div>`;
+                    
+                    if (applicationsContainer) {
+                        applicationsContainer.innerHTML = tableHTML;
+                        addApplicationEventListeners(); // Add listeners after table is inserted
+                    }
+                    } catch (error) {
+                    console.error('Error fetching job applications:', error);
+                    if (applicationsContainer) applicationsContainer.innerHTML = `<p class="no-data" style="color: red;">ማመልከቻዎችን መጫን አልተቻለም። ስህተት: ${error.message}.</p>`;
+                }
+            }
+
+            // Function to add event listeners for application actions
+            function addApplicationEventListeners() {
+                // Delete button
+                document.querySelectorAll('#jobApplicationsTable .delete-btn').forEach(button => {
+                    button.addEventListener('click', async (event) => {
+                        const id = event.currentTarget.dataset.id;
+                        if (confirm('ይህንን የስራ ማመልከቻ መሰረዝ ይፈልጋሉ?')) { 
+                            try {
+                                const token = localStorage.getItem('token');
+                                const deleteResponse = await fetch(`${API_BASE_URL}/applications/${id}`, {
+                                    method: 'DELETE',
+                                    headers: { 'Authorization': `Bearer ${token}` }
+                                });
+                                
+                                if (deleteResponse.ok) {
+                                    const result = await deleteResponse.json(); 
+                                    alert(result.message || 'የስራ ማመልከቻው በተሳካ ሁኔታ ተሰርዟል!');
+                                    fetchApplications(); // Refresh table
+                                } else {
+                                    let errorData = { message: 'ያልታወቀ ስህተት' };
+                                    const contentType = deleteResponse.headers.get("content-type");
+                                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                                        errorData = await deleteResponse.json();
+                                    } else {
+                                        const errorText = await deleteResponse.text();
+                                        console.error('Raw delete error response:', errorText);
+                                        errorData.message = `Server ስህተት: ${deleteResponse.status}. ዝርዝር ስህተት ለማየት Backend Console ይመልከቱ።`;
+                                    }
+                                    alert(`ማመልከቻውን መሰረዝ አልቻለም: ${errorData.message}`);
+                                }
+                            } catch (error) {
+                                console.error('Error deleting application:', error);
+                                alert('የኔትዎርክ ስህተት ማመልከቻውን መሰረዝ አልተቻለም።');
+                            }
+                        }
+                    });
+                });
+
+                // View CV button
+                document.querySelectorAll('#jobApplicationsTable .view-cv-btn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const cvPath = event.currentTarget.dataset.cvPath;
+                        if (cvPath && cvPath !== '#') {
+                            window.open(cvPath, '_blank'); // Open CV in new tab
+                        } else {
+                            alert('ለዚህ ማመልከቻ CV የለም።');
+                        }
+                    });
+                });
+            }
+
+            // Initial fetch of applications when the page loads
+            fetchApplications();
+        }; 
+    </script>
+</body>
+</html>

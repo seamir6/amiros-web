@@ -1,0 +1,1323 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Noto Sans Ethiopic', sans-serif; /* ለአማርኛ ፊደላት ድጋፍ */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #004a7c; /* Lucy College Blue */
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* ለሞባይል */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 50%; /* ወደ ቀድሞው ክብ ቅርጽ ተመልሷል */
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* Main Navigation Styles */
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* በሊንኮች መካከል ያለው ክፍተት */
+}
+
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* ሊንኮች እንዳይሰበሩ */
+}
+
+.main-nav ul li a:hover {
+    color: #ffcc00; /* ቢጫ ሲነካ */
+
+}
+
+/* Header Icons (Menu Toggle) */
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.header-icons .fas {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.header-icons .fas:hover {
+    color: #ffcc00;
+}
+
+/* ይህ የ menu-toggle rule በዴስክቶፕ ላይ ይደበቃል */
+.menu-toggle {
+    display: none;
+    font-size: 1.5em; /* የአይኮኑ መጠን */
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.menu-toggle:hover {
+    color: #ffcc00;
+}
+
+/* Hero Section Styles (For Index Page) */
+.hero-section {
+    background-image: url('image/hero-bg.jpg'); /* የመረጡትን ምስል ያስገቡ */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px; /* የበለጠ ቀንሷል */
+    min-height: 280px; /* የበለጠ ቀንሷል */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* ምስል ከክፍል እንዳይወጣ */
+}
+
+.hero-section::before { /* ለጽሁፍ ግልጽነት እና ለሎጎው ቀለም ዳራ */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 74, 124, 0.75); /* የሎጎው ሰማያዊ ቀለም ከ60% ግልጽነት ጋር */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h2 {
+    font-size: 2.8em; /* የጽሁፍ መጠን የበለጠ ቀንሷል */
+    margin-bottom: 8px; /* ክፍተት የበለጠ ቀንሷል */
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9); /* የጥላው መጠን እና ግልጽነት ከፍ ብሏል */
+}
+
+.hero-section p {
+    font-size: 1.1em; /* የጽሁፍ መጠን የበለጠ ቀንሷል */
+    margin-bottom: 15px; /* ክፍተት የበለጠ ቀንሷል */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8); /* የጥላው መጠን እና ግልጽነት ከፍ ብሏል */
+}
+
+/* Info Sections (Cards - for Index Page) */
+.info-sections {
+    padding: 50px 0;
+    background-color: #f4f7f6;
+}
+
+.info-sections .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.info-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.info-card .icon-placeholder {
+    font-size: 3em;
+    color: #ffcc00; /* ወደ ሎጎው ቢጫ ቀለም ተቀይሯል */
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    font-size: 1.5em;
+    color: #004a7c;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.info-card h3 a {
+    color: #004a7c;
+    text-decoration: none;
+}
+.info-card h3 a:hover {
+    color: #ffcc00;
+}
+
+.info-card p {
+    color: #555;
+    font-size: 0.95em;
+}
+
+/* Welcome Message Section (For Index Page) */
+.welcome-message {
+    background-color: #e6f2f8; /* ቀላል ሰማያዊ */
+    padding: 60px 0;
+}
+.welcome-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.president-photo {
+    flex: 1;
+    min-width: 280px; /* በትንሽ ስክሪን ላይ እንዳይበላሽ */
+    text-align: center;
+}
+
+.president-photo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* አራት ማዕዘን ፍሬም */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.president-message {
+    flex: 2;
+    min-width: 300px;
+}
+
+.president-message h2 {
+    color: #004a7c;
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.president-message p {
+    color: #444;
+    font-size: 1.05em;
+    margin-bottom: 10px;
+}
+
+.president-name {
+    font-weight: bold;
+    color: #004a7c;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.president-title {
+    font-style: italic;
+    color: #666;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #003a60; /* ጥቁር ሰማያዊ */
+    color: #e6f2f8;
+    padding: 40px 0 20px;
+    font-size: 0.95em;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-about h3, .footer-links h3, .footer-contact h3 {
+    color: #ffcc00; /* ቢጫ */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.footer-about p {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #e6f2f8;
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffcc00;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #e6f2f8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #ffcc00;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-contact p .fas, .footer-contact p .far {
+    margin-right: 10px;
+    font-size: 1.1em;
+    margin-top: 3px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #a0c2d3;
+}
+
+/* Page Specific Styles (General for About, Departments, Careers, Contact if they have a shared title section) */
+/* Note: For Careers, we are removing the hero section, so this might not apply directly to it,
+    but we'll use page-content class for the main content. */
+.page-title-section {
+    background-color: #005a90; /* ከHeader ትንሽ የጠቆረ ሰማያዊ */
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.page-title-section h1 {
+    font-size: 3em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.page-title-section p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* About Page Hero Section Specific Styles */
+.about-hero-section {
+    background-image: url('image/graduates-bg.jpg'); /* የመመረቁ ተማሪዎች ፎቶ ፋይል ስም */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* ለ::before pseudo-element base */
+    overflow: hidden;
+    padding: 150px 20px 50px 20px; /* ከላይ 150px, ከጎን 20px, ከታች 50px */
+    min-height: 350px; /* ምስሉ እንዲታይ */
+    display: flex;
+    align-items: flex-end; /* ጽሁፉን ወደታች እንዲያስጠጋው ያደርጋል */
+    justify-content: center;
+}
+
+.about-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 74, 124, 0.85); /* የሎጎው ሰማያዊ ቀለም ከ85% ግልጽነት ጋር */
+    z-index: 0; /* ከይዘቱ ስር እንዲሆን */
+}
+
+.about-hero-section .container {
+    position: relative; /* ከ::before በላይ እንዲሆን */
+    z-index: 1;
+    color: #fff; /* ጽሁፉ ነጭ እንዲሆን */
+}
+
+.about-hero-section h1 {
+    font-size: 3.2em; /* ለትልቅ ማዕረግ */
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* ጽሁፉ ደመቅ እንዲል */
+}
+
+.about-hero-section p {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6); /* ጽሁፉ ደመቅ እንዲል */
+}
+/* Departments Page Hero Section Specific Styles */
+.departments-hero-section {
+    background-image: url('image/departments-hero-bg.jpg'); /* የመረጥከው የምስል ፋይል ስም */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    padding: 150px 20px 50px 20px; /* ከላይ 150px, ከጎን 20px, ከታች 50px */
+    min-height: 350px; /* ምስሉ እንዲታይ */
+    display: flex;
+    align-items: flex-end; /* ጽሁፉን ወደታች እንዲያስጠጋው ያደርጋል */
+    justify-content: center;
+    text-align: center; /* ጽሁፉ መሃል ላይ እንዲሆን */
+}
+
+.departments-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 74, 124, 0.85); /* የሎጎው ሰማያዊ ቀለም ከ85% ግልጽነት ጋር */
+    z-index: 0;
+}
+
+.departments-hero-section .container {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.departments-hero-section h1 {
+    font-size: 3.2em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.departments-hero-section p {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+
+.page-content { /* General styling for main content sections */
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.page-content h1 { /* Main title for pages without hero section, like careers and application-form */
+    color: #004a7c;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ffcc00;
+    display: inline-block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px; /* ክፍተት ከHeader ስር */
+}
+
+.page-content h2 {
+    color: #004a7c;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    display: inline-block; /* የሰማያዊው መስመር ስፋቱን እንዲከተል */
+}
+
+.page-content h3 {
+    color: #004a7c;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.page-content p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.page-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.page-content ul li {
+    background-color: #eef7fc; /* ቀላል ሰማያዊ ዳራ ለዝርዝሮች */
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border-left: 4px solid #004a7c;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.page-content ul.department-list li .fas,
+.page-content ul.announcement-list li .fas { /* For both department and announcement lists */
+    margin-right: 15px;
+    color: #004a7c;
+    font-size: 1.2em;
+}
+
+/* Styles for the department list section */
+.departments-list-section { /* This class is added to the page-content section in departments.html */
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.departments-list-section h2 { /* This rule now targets specific h2 in departments-list-section */
+    color: #004a7c;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-top: 40px; /* ከላይኛው ክፍል ክፍተት እንዲኖረው */
+}
+
+.departments-list-section p { /* This rule now targets specific p in departments-list-section */
+    color: #555;
+    margin-bottom: 15px;
+}
+
+
+/* Careers Page Specific Styles */
+.careers-section .container {
+    /* No specific padding-top here as the h1 within page-content now handles it */
+}
+
+.careers-section h1 { /* Main title for Careers page */
+    margin-top: 0; /* Remove default h1 margin-top */
+}
+
+.careers-section > .form-intro { /* The direct paragraph under the main h1 - renamed for clarity */
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* ከስር ካለው ክፍል ትንሽ ክፍተት እንዲኖረው */
+    font-size: 1.1em;
+    color: #666;
+}
+
+.career-category {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 30px;
+    margin-bottom: 40px; /* በየምድቦቹ መካከል ክፍተት */
+}
+.career-category h2 {
+    font-size: 1.8em;
+    color: #004a7c;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.career-category > p { /* Paragraph directly under h2 */
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.job-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.job-card h3 {
+    font-size: 1.6em;
+    color: #004a7c;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: none; /* remove page-content h2 border */
+}
+
+.job-card p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.job-card .apply-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #004a7c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.job-card .apply-btn:hover {
+    background-color: #e6b800;
+    color: #003a60;
+}
+
+.announcement-list li {
+    background-color: #e6f2f8; /* Light blue for announcements */
+    border-left: 4px solid #ffcc00; /* Yellow border */
+}
+
+
+/* Application Form Page Specific Styles */
+.application-form-section .container {
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 40px; /* ከ Header ስር ክፍተት */
+    margin-bottom: 40px; /* ከ Footer በላይ ክፍተት */
+}
+
+.application-form-section h1 { /* Main title for the form page */
+    margin-bottom: 20px;
+}
+
+.application-form-section .form-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.application-form-section form {
+    margin-top: 30px;
+}
+
+.application-form-section .form-group {
+    margin-bottom: 20px;
+}
+
+.application-form-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #004a7c;
+    font-size: 1.05em;
+}
+
+.application-form-section input[type="text"],
+.application-form-section input[type="email"],
+.application-form-section input[type="tel"],
+.application-form-section input[type="number"],
+.application-form-section textarea {
+    width: calc(100% - 24px); /* For padding and border */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-form-section textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.application-form-section input[type="file"] {
+    width: 100%;
+    padding: 10px 0; /* No horizontal padding for file input itself */
+    font-size: 1em;
+    color: #555;
+}
+
+.application-form-section input[type="text"]:focus,
+.application-form-section input[type="email"]:focus,
+.application-form-section input[type="tel"]:focus,
+.application-form-section input[type="number"]:focus,
+.application-form-section textarea:focus {
+    border-color: #004a7c;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.2);
+}
+
+.application-form-section .gender-options {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.application-form-section .gender-options input[type="radio"] {
+    margin-right: 5px;
+    width: auto; /* Override default input[type] width */
+}
+
+.application-form-section .gender-options label {
+    margin-bottom: 0; /* Remove default label margin */
+    font-weight: normal; /* Make label text normal weight for radio buttons */
+    color: #555;
+    display: inline-block; /* Align with radio button */
+}
+
+.application-form-section .file-note {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.application-form-section .submit-button {
+    background-color: #004a7c;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block; /* Full width button */
+    width: 100%;
+    margin-top: 30px;
+}
+
+.application-form-section .submit-button:hover {
+    background-color: #003a60;
+}
+
+
+/* Contact Page Specific Styles */
+.contact-page-section .container {
+    padding-top: 40px; /* ከ Header ስር ክፍተት */
+    padding-bottom: 40px; /* ከ Footer በላይ ክፍተት */
+}
+
+.contact-page-section h1 { /* Main title for contact page */
+    margin-bottom: 20px;
+}
+
+.contact-page-section .section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto; /* ከስር ካለው ክፍል ትንሽ ክፍተት እንዲኖረው */
+    font-size: 1.1em;
+    color: #666;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.contact-card {
+    background-color: #eef7fc; /* Light blue background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.contact-card .icon-large {
+    font-size: 3.5em; /* Large icons */
+    color: #004a7c; /* Blue color */
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    color: #004a7c;
+    font-size: 1.6em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: none; /* remove border from page-content h2/h3 style */
+}
+
+.contact-card p {
+    display: block; /* Make paragraphs block for better stacking in cards */
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.contact-card p.small-text {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.contact-form-section, .map-section {
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 50px; /* Space between sections */
+    text-align: center; /* Center h2 and intro paragraph */
+}
+
+.contact-form-section h2, .map-section h2 {
+    margin-bottom: 20px;
+    font-size: 2.2em; /* Slightly larger heading for these sections */
+    display: inline-block; /* Keep underline only under text */
+}
+
+.contact-form-section .form-intro-small, .map-section .section-intro-small {
+    font-size: 1em;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.contact-form form {
+    margin-top: 30px;
+    text-align: left; /* Align form elements to the left within the section */
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #004a7c;
+    font-size: 1.05em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: calc(100% - 24px); /* For padding and border */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #004a7c;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.2);
+}
+
+.contact-form .submit-button {
+    background-color: #004a7c;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block; /* Full width button */
+    width: 100%;
+    margin-top: 30px;
+}
+
+.contact-form .submit-button:hover {
+    background-color: #003a60;
+}
+.map-container {
+    width: 100%;
+    max-width: 900px; /* Max width for the map */
+    margin: 30px auto 0 auto; /* Center the map and add top margin */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure iframe corners are rounded */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px; /* Standard height for maps */
+    border: 0;
+    display: block; /* Removes extra space below iframe */
+}
+
+
+/* Org Diagram Image Styles (for the new image-based diagram) */
+.org-diagram-image {
+    text-align: center; /* ምስሉን መሃል ለማድረግ */
+    margin-bottom: 30px; /* ከታች ካለው ጽሁፍ መለየት */
+    overflow-x: auto; /* ምስሉ ከስክሪን ሲበልጥ ስክሮል እንዲያደርግ */
+}
+
+.org-diagram-image img {
+    max-width: 100%; /* ምስሉ ከወላጅ ኮንቴይነሩ ስፋት በላይ እንዳይሄድ */
+    height: auto; /* ምስሉ ሲጠበብ መጠኑን እንዲጠብቅ */
+    display: block; /* ለ margin auto እንዲሰራ */
+    margin: 0 auto; /* ምስሉን መሃል ለማድረግ */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ትንሽ ጥላ ማከል */
+    border-radius: 8px; /* ትንሽ ጥግ እንዲኖረው */
+}
+
+/* Gallery Page Specific Styles */
+.gallery-page-section .container {
+    padding-top: 40px; /* ከ Header ስር ክፍተት */
+    padding-bottom: 40px; /* ከ Footer በላይ ክፍተት */
+}
+
+.gallery-page-section h1 {
+    margin-bottom: 20px;
+}
+
+.gallery-page-section .section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto; /* ከስር ካለው ክፍል ትንሽ ክፍተት እንዲኖረው */
+    font-size: 1.1em;
+    color: #666;
+}
+
+.image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden; /* ምስሉ የጥግ ቅርጹን እንዲይዝ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* ምስሉ እና ጽሁፉ ከላይ እና ከታች እንዲደረደሩ */
+    justify-content: space-between; /* ጽሁፉ ከስር እንዲሆን */
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* የጋለሪ ምስሎች ቋሚ ቁመት እንዲኖራቸው */
+    object-fit: cover; /* ምስሉ ሳይዛባ አካባቢውን እንዲሞላ */
+    display: block; /* የምስሉን ስር ያለውን ክፍተት ለመቀነስ */
+}
+
+.gallery-item .caption {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #004a7c;
+    font-weight: bold;
+    background-color: #eef7fc; /* ቀላል ሰማያዊ ዳራ ለርዕሱ */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    /* እዚህ ጋር ነው ያሉት የ main-nav rules */
+    .main-nav {
+        width: 100%;
+        order: 3; /* ሜኑ ከHeader Icons በታች እንዲሆን */
+        max-height: 0; /* መጀመሪያ ይደበቃል */
+        overflow: hidden; /* ይዘቱ ከክፍል እንዳይወጣ */
+        transition: max-height 0.3s ease-out; /* ለስላሳ ሽግግር */
+        background-color: #003a60; /* ለሞባይል ሜኑ ዳራ ቀለም */
+        border-radius: 5px;
+        padding: 0; /* መጀመሪያ ዜሮ ፓዲንግ */
+        margin-top: 10px;
+    }
+
+    .main-nav.active {
+        max-height: 300px; /* ሜኑ ሲከፈት እንዲታይ */
+        padding: 10px 0; /* ሲከፈት ፓዲንግ ይጨምራል */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* ሊንኮች በአንድ አምድ እንዲደረደሩ */
+        text-align: center;
+        gap: 0; /* የሊንኮች ክፍተት በሞባይል ይወገዳል */
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .main-nav ul li a {
+        display: block;
+        padding: 8px 0;
+    }
+
+    /* Header Icons for Mobile */
+    .header-icons {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        gap: 15px;
+    }
+
+    /* የ menu-toggle rule በሞባይል ላይ እንዲታይ ያደርጋል */
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-section p {
+        font-size: 1.2em;
+    }
+
+    .info-sections .container {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .president-photo {
+        margin-bottom: 20px;
+    }
+    .president-message {
+        text-align: center; /* ጽሁፉን መሃል ለማድረግ */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        text-align: center;
+    }
+
+    .footer-contact p {
+        justify-content: center;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        padding: 20px;
+    }
+
+    /* Application Form Responsiveness */
+    .application-form-section .container {
+        padding: 25px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .application-form-section h1 {
+        font-size: 2.2em;
+        padding-top: 0; /* Remove extra padding on smaller screens */
+    }
+    .application-form-section .form-intro {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    .application-form-section label {
+        font-size: 1em;
+    }
+    .application-form-section input[type="text"],
+    .application-form-section input[type="email"],
+    .application-form-section input[type="tel"],
+    .application-form-section input[type="number"],
+    .application-form-section textarea {
+        width: calc(100% - 20px); /* Adjust for smaller padding */
+        padding: 10px;
+    }
+    .application-form-section .submit-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+
+    /* Contact Page Responsiveness */
+    .contact-page-section h1 {
+        font-size: 2.2em;
+        padding-top: 0;
+    }
+    .contact-page-section .section-intro {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .contact-card {
+        padding: 20px;
+    }
+    .contact-card .icon-large {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    .contact-card h3 {
+        font-size: 1.4em;
+    }
+    .contact-card p {
+        font-size: 0.9em;
+    }
+    .contact-form-section, .map-section {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    .contact-form-section h2, .map-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .contact-form-section .form-intro-small, .map-section .section-intro-small {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+    .contact-form label {
+        font-size: 1em;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+    .contact-form .submit-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+    .map-container {
+        margin-top: 20px;
+    }
+    .map-container iframe {
+        height: 300px; /* Shorter map on smaller screens */
+    }
+
+    /* Gallery Page Responsiveness */
+    .gallery-page-section h1 {
+        font-size: 2.2em;
+        padding-top: 0;
+    }
+    .gallery-page-section .section-intro {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .image-gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* ትንሽ ይቀንሳል */
+        gap: 20px;
+    }
+    .gallery-item img {
+        height: 200px; /* የጋለሪ ምስሎች ቁመት ይቀንሳል */
+    }
+    .gallery-item .caption {
+        font-size: 1em;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-icons {
+        top: 20px;
+        right: 15px;
+    }
+    .logo h1 {
+        font-size: 1.5em;
+    }
+    .hero-section h2 {
+        font-size: 2em;
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+    /* የResponsive Design ማስተካከያዎች (ለabout-hero-section እና departments-hero-section) */
+    .about-hero-section h1, .departments-hero-section h1 {
+        font-size: 2.2em;
+    }
+    .about-hero-section p, .departments-hero-section p {
+        font-size: 1.05em;
+    }
+    .about-hero-section, .departments-hero-section {
+        padding: 60px 15px;
+        min-height: 300px;
+    }
+    /* Careers page specific responsiveness */
+    .careers-section h1 {
+        font-size: 2em;
+    }
+    .careers-section > .form-intro {
+        font-size: 1em;
+    }
+    .career-category {
+        padding: 20px;
+    }
+    .career-category h2 {
+        font-size: 1.6em;
+    }
+    .job-card {
+        padding: 20px;
+    }
+    .job-card h3 {
+        font-size: 1.4em;
+    }
+
+    /* Application Form specific responsiveness */
+    .application-form-section h1 {
+        font-size: 1.8em;
+    }
+    .application-form-section .form-intro {
+        font-size: 0.95em;
+    }
+    .application-form-section .gender-options {
+        flex-direction: column; /* Stack radio buttons vertically */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Contact Page Responsiveness */
+    .contact-page-section h1 {
+        font-size: 1.8em;
+    }
+    .contact-page-section .section-intro {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+    .contact-card {
+        padding: 15px;
+    }
+    .contact-card .icon-large {
+        font-size: 2.8em;
+        margin-bottom: 10px;
+    }
+    .contact-card h3 {
+        font-size: 1.2em;
+    }
+    .contact-card p {
+        font-size: 0.9em;
+    }
+    .contact-form-section, .map-section {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+    .contact-form-section h2, .map-section h2 {
+        font-size: 1.6em;
+    }
+    .contact-form-section .form-intro-small, .map-section .section-intro-small {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: calc(100% - 16px); /* Adjust for smaller padding */
+        padding: 8px;
+    }
+    .contact-form .submit-button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .map-container iframe {
+        height: 250px; /* Even shorter map on very small screens */
+    }
+
+    /* Gallery Page Responsiveness */
+    .gallery-page-section h1 {
+        font-size: 1.8em;
+    }
+    .gallery-page-section .section-intro {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+    .image-gallery-grid {
+        grid-template-columns: 1fr; /* በሞባይል ላይ አንድ በአንድ እንዲደረደሩ */
+        gap: 15px;
+    }
+    .gallery-item img {
+        height: 180px; /* የምስሎች ቁመት የበለጠ ይቀንሳል */
+    }
+    .gallery-item .caption {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ሉሲ ኮሌጅ - የእውቂያ መልዕክቶች</title>
+    <!-- የውጪው style.css ፋይልህን በትክክል መገናኘቱን አረጋግጥ -->
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Logout and Back button group */
+        .admin-actions {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            gap: 10px; /* Space between buttons */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .admin-actions button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        #logout-button {
+            background-color: #dc3545;
+            color: white;
+        }
+        #logout-button:hover {
+            background-color: #c82333;
+        }
+        #back-button { /* Style for the new Back button */
+            background-color: #007bff; /* Blue color */
+            color: white;
+        }
+        #back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Page specific content area - ensures footer visibility */
+        main {
+            min-height: calc(100vh - 250px); /* Adjusted value to push footer down */
+        }
+
+        /* Specific style for the main message on this page */
+        .page-message {
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 2.5em; /* Larger font size */
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Styles for the table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .data-table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .data-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-messages, .loading-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #666;
+        }
+        .loading-message {
+            color: #007bff;
+        }
+        .action-buttons button {
+            padding: 8px 12px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+        .action-buttons .delete-btn {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+        .action-buttons .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .action-buttons .read-btn { /* Style for Read button */
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+        .action-buttons .read-btn:hover {
+            background-color: #218838;
+        }
+        .status-badge { /* Style for status badge */
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+            text-transform: capitalize;
+        }
+        .status-badge.unread {
+            background-color: #ffc107; /* Yellow for unread */
+        }
+        .status-badge.read {
+            background-color: #28a745; /* Green for read */
+        }
+        .message-text {
+            max-width: 300px; /* Limit width of message column */
+            white-space: normal; /* Allow text to wrap */
+            word-wrap: break-word; /* Break long words */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ዋናው የሳይት Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="image/lucy.jpg" alt="ሉሲ ኮሌጅ ሎጎ">
+                <h1>ሉሲ ኮሌጅ</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">መነሻ</a></li>
+                    <li><a href="about.html">ስለ እኛ</a></li>
+                    <li><a href="departments.html">የትምህርት ክፍሎች</a></li>
+                    <li><a href="careers.html">ቅጥር &amp; ማስታወቂያ</a></li>
+                    <li><a href="contact.html">እውቂያ</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="admin-dashboard-section">
+            <div class="container">
+                <!-- Button group for Logout and Back -->
+                <div class="admin-actions">
+                    <button id="back-button">ተመለስ (Back)</button>
+                    <button id="logout-button">ውጣ (Logout)</button>
+                </div>
+                
+                <h1>የእውቂያ መልዕክቶች</h1>
+                
+                <div class="page-message">
+                    የ ሉሲ ኮሌጅ የእውቅያ መልእክቶች
+                </div>
+
+                <!-- Contact Messages Table - Content will be inserted by JavaScript -->
+                <div id="contactMessagesTableContainer">
+                    <p class="loading-message"><i class="fas fa-spinner fa-spin"></i> መልዕክቶችን በማምጣት ላይ...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-about">
+                <h3>ስለ ሉሲ ኮሌጅ</h3>
+                <p>ሉሲ ኮሌጅ የላቀ ትምህርት ለመስጠት እና በማህበረሰብ ልማት ላይ ለመሳተፍ ቆርጦ ተነስቷል።</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>ፈጣን አገናኞች</h3>
+                <ul>
+                    <li><a href="#">የመግቢያ መስፈርቶች</a></li>
+                    <li><a href="#">የዜና ማዕከል</a></li>
+                    <li><a href="#">የተመራቂዎች ማህበር</a></li>
+                    <li><a href="#">ቅጥር</a></li>
+                    <li><a href="#">የግላዊነት ፖሊሲ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>እውቂያ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> አዲስ አበባ፣ ኢትዮጵያ</p>
+                <p><i class="fas fa-phone-alt"></i> +251-11-XXXXXXX</p>
+                <p><i class="fas fa-envelope"></i> info@lucycollege.edu</p>
+                <p><i class="fas fa-clock"></i> ሰኞ - አርብ: 8:30 ጥዋት - 5:30 ከሰዓት</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ሉሲ ኮሌጅ. ሁሉም መብቶች የተጠበቁ ናቸው።</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page-specific JavaScript for Contact Messages Page
+        // Using window.onload to ensure the script runs only once after the entire page is loaded
+        window.onload = () => { 
+            // Mobile Menu Toggle (Ensures header navigation works)
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav ul');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            const logoutButton = document.getElementById('logout-button');
+            const backButton = document.getElementById('back-button'); 
+
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    localStorage.removeItem('token'); 
+                    window.location.href = '/admin.html'; 
+                });
+            }
+
+            if (backButton) { 
+                backButton.addEventListener('click', () => {
+                    window.location.href = '/admin.html'; // Redirect to the admin dashboard
+                });
+            }
+
+            const API_BASE_URL = 'http://localhost:3000/api';
+
+            // Function to fetch and display messages
+            async function fetchMessages() {
+                const messagesContainer = document.getElementById('contactMessagesTableContainer');
+                if (messagesContainer) {
+                    messagesContainer.innerHTML = '<p class="loading-message"><i class="fas fa-spinner fa-spin"></i> መልዕክቶችን በማምጣት ላይ...</p>';
+                }
+                
+                const token = localStorage.getItem('token'); 
+
+                if (!token) {
+                    if (messagesContainer) messagesContainer.innerHTML = '<p class="no-messages" style="color: red;">ይህንን ገጽ ለማየት መግባት አለብዎት።</p>';
+                    setTimeout(() => { window.location.href = '/admin.html'; }, 2000); 
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/contact`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.status === 401 || response.status === 403) {
+                        localStorage.removeItem('token');
+                        alert('የእርስዎ ክፍለ ጊዜ አልፏል ወይም መግባት ያስፈልግዎታል። እባክዎ እንደገና ይግቡ።');
+                        window.location.href = '/admin.html'; 
+                        return;
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    let contacts = await response.json();
+                    
+                    // Backend's getAllContacts returns { success: true, data: contacts }
+                    if (contacts.data && Array.isArray(contacts.data)) {
+                        contacts = contacts.data;
+                    } else if (!Array.isArray(contacts)) {
+                         console.warn("Expected contacts.data to be an array, but received:", contacts);
+                         throw new Error('Expected an array of contacts or an object with a data array from backend.');
+                    }
+                    let tableHTML = `
+                        <div class="table-responsive">
+                            <table class="data-table" id="contactMessagesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ስም</th>
+                                        <th>ኢሜል</th>
+                                        <th>ርዕሰ ጉዳይ</th>
+                                        <th>መልዕክት</th>
+                                        <th>የተላከበት ቀን</th>
+                                        <th>ሁኔታ</th>
+                                        <th>ድርጊት</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+
+                    if (contacts.length > 0) { 
+                        contacts.forEach(contact => {
+                            const statusClass = contact.status === 'read' ? 'read' : 'unread'; 
+                            const statusText = contact.status === 'read' ? 'ተነቧል' : 'አልተነበበም'; 
+
+                            // Use contact.createdAt for date display, as it's reliably set by timestamps
+                            const messageDate = contact.createdAt ? 
+                                new Date(contact.createdAt).toLocaleDateString('am-ET', { year: 'numeric', month: 'short', day: 'numeric' }) : 
+                                'Invalid Date';
+
+                            tableHTML += ` 
+                                <tr>
+                                    <td>${contact.name}</td>
+                                    <td>${contact.email}</td>
+                                    <td>${contact.subject}</td>
+                                    <td class="message-text">${contact.message}</td>
+                                    <td>${messageDate}</td>
+                                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                                    <td class="action-buttons">
+                                        <button class="read-btn" data-id="${contact._id}" ${contact.status === 'read' ? 'disabled' : ''}>${contact.status === 'read' ? 'ተነቧል' : 'አንብብ'}</button>
+                                        <button class="delete-btn" data-id="${contact._id}">ሰርዝ</button>
+                                    </td>
+                                </tr>`;
+                        });
+                    } else {
+                        tableHTML += '<tr><td colspan="7">መልዕክቶች የሉም።</td></tr>'; 
+                    }
+                    tableHTML += `
+                                </tbody>
+                            </table>
+                        </div>`;
+                    
+                    if (messagesContainer) {
+                        messagesContainer.innerHTML = tableHTML;
+                        addMessageEventListeners(); // Add listeners after table is inserted
+                    }
+
+                } catch (error) {
+                    console.error('Error fetching contact messages:', error);
+                    if (messagesContainer) messagesContainer.innerHTML = `<p class="no-messages" style="color: red;">መልዕክቶችን መጫን አልተቻለም። ስህተት: ${error.message}.</p>`;
+                }
+            }
+
+            // Function to add event listeners for message actions
+            function addMessageEventListeners() {
+                // Delete button
+                document.querySelectorAll('#contactMessagesTable .delete-btn').forEach(button => {
+                    button.addEventListener('click', async (event) => {
+                        const id = event.currentTarget.dataset.id;
+                        if (confirm('ይህንን መልዕክት መሰረዝ ይፈልጋሉ?')) { 
+                            try {
+                                const token = localStorage.getItem('token');
+                                const deleteResponse = await fetch(`${API_BASE_URL}/contact/${id}`, {
+                                    method: 'DELETE',
+                                    headers: { 'Authorization': `Bearer ${token}` }
+                                });
+                                if (deleteResponse.ok) {
+                                    const result = await deleteResponse.json(); // Expect JSON response
+                                    alert(result.message || 'መልዕክቱ በተሳካ ሁኔታ ተሰርዟል!');
+                                    fetchMessages(); // Refresh table
+                                } else {
+                                    let errorData = { message: 'ያልታወቀ ስህተት' };
+                                    const contentType = deleteResponse.headers.get("content-type");
+                                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                                        errorData = await deleteResponse.json();
+                                    } else {
+                                        const errorText = await deleteResponse.text();
+                                        console.error('Raw delete error response:', errorText);
+                                        errorData.message = `Server ስህተት: ${deleteResponse.status}. ዝርዝር ስህተት ለማየት Backend Console ይመልከቱ።`;
+                                    }
+                                    alert(`መልዕክቱን መሰረዝ አልቻለም: ${errorData.message}`);
+                                }
+                            } catch (error) {
+                                console.error('Error deleting message:', error);
+                                alert('የኔትዎርክ ስህተት መልዕክቱን መሰረዝ አልተቻለም።');
+                            }
+                        }
+                    });
+                });
+
+                // Mark as Read button
+                document.querySelectorAll('#contactMessagesTable .read-btn').forEach(button => {
+                    button.addEventListener('click', async (event) => {
+                        const id = event.currentTarget.dataset.id;
+                        // Only mark as read if not already read
+                        if (!event.currentTarget.disabled) {
+                            if (confirm('ይህንን መልዕክት እንደተነበበ ምልክት ማድረግ ይፈልጋሉ?')) {
+                                try {
+                                    const token = localStorage.getItem('token');
+                                    // Send 'newStatus: "read"' as per the Backend Controller
+                                    const updateResponse = await fetch(`${API_BASE_URL}/contact/${id}`, { 
+                                        method: 'PATCH', 
+                                        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({ newStatus: "read" }) 
+                                    });
+                                    if (updateResponse.ok) {
+                                        const result = await updateResponse.json(); // Expect JSON response
+                                        alert(result.message || 'መልዕክቱ እንደተነበበ ምልክት ተደርጓል!');
+                                        fetchMessages(); // Refresh table
+                                    } else {
+                                        let errorData = { message: 'ያልታወቀ ስህተት' };
+                                        const contentType = updateResponse.headers.get("content-type");
+                                        if (contentType && contentType.indexOf("application/json") !== -1) {
+                                            errorData = await updateResponse.json();
+                                        } else {
+                                            const errorText = await updateResponse.text();console.error('Raw update error response:', errorText);
+                                            errorData.message = `Server ስህተት: ${updateResponse.status}. ዝርዝር ስህተት ለማየት Backend Console ይመልከቱ።`;
+                                        }
+                                        alert(`መልዕክቱን ምልክት ማድረግ አልቻለም: ${errorData.message}`);
+                                    }
+                                } catch (error) {
+                                    console.error('Error marking message as read:', error);
+                                    alert('የኔትዎርክ ስህተት መልዕክቱን ምልክት ማድረግ አልቻለም።');
+                                  }
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Initial fetch of messages when the page loads
+            fetchMessages();
+        }; 
+    </script>
+</body>
+</html>
