@@ -1,6 +1,5 @@
 // lucycollege-backend/controllers/contactController.js
-
-const Contact = require('../models/Contact'); // Make sure this path is correct for your Contact model
+const Contact = require('../models/contact'); // Make sure this path is correct for your Contact model
 
 // Controller function to get all contact messages
 exports.getAllContacts = async (req, res) => {
