@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Contact = require('../models/Contact'); // Contact Model ን አስመጣ
+const Contact = require('../models/contact'); // Contact Model ን አስመጣ
 // CHANGED: Import the protect middleware from authMiddleware.js
 const { protect } = require('../middleware/authMiddleware'); 
 // CHANGED: Import the contactController
